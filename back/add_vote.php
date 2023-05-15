@@ -28,8 +28,8 @@
         </div>
         <div>
             <label for="type">單複選：</label>
-            <input type="radio" name="type" id="type">單選&nbsp;&nbsp;
-            <input type="radio" name="type" id="type">複選
+            <input type="radio" name="type" value="1">單選&nbsp;&nbsp;
+            <input type="radio" name="type" value="2">複選
         </div>
         <div>
             <input type="submit" value="新增">
