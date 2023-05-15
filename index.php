@@ -13,7 +13,22 @@
     <a href="./front/login.php">登入</a>
     <a href="./front/reg.php">註冊</a>
 </header>
-<main></main>
+<main>
+<ul>
+<?php
+//資料庫連線
+include_once "db.php";
+
+$sql="select * from `topics`";
+$rows=$pdo->query($sql)->fetchAll();
+foreach($rows as $row){
+?>
+<li><?=$row['subject'];?></li>
+<?php
+}
+?>
+</ul>
+</main>
 <footer></footer>
 
 </body>
