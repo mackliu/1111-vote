@@ -32,6 +32,13 @@
             <input type="radio" name="type" value="2">複選
         </div>
         <hr>
+    <div class="options">        
+        <div>
+            <label for="description">項目：</label>
+            <input type="text" name="description[]"  class="description-input">
+            <span>+</span>
+        </div>
+
         <div>
             <label for="description">項目：</label>
             <input type="text" name="description[]"  class="description-input">
@@ -56,10 +63,7 @@
             <label for="description">項目：</label>
             <input type="text" name="description[]"  class="description-input">
         </div>
-        <div>
-            <label for="description">項目：</label>
-            <input type="text" name="description[]"  class="description-input">
-        </div>
+    </div>
         <div>
             <input type="submit" value="新增">
         </div>
