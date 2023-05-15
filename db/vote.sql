@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2023-05-15 08:04:11
+-- 產生時間： 2023-05-15 10:14:29
 -- 伺服器版本： 10.4.27-MariaDB
 -- PHP 版本： 8.2.0
 
@@ -60,6 +60,7 @@ CREATE TABLE `member` (
 CREATE TABLE `options` (
   `id` int(10) UNSIGNED NOT NULL,
   `description` text NOT NULL,
+  `subject_id` int(10) UNSIGNED NOT NULL,
   `total` int(10) UNSIGNED NOT NULL DEFAULT 0,
   `created_time` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
