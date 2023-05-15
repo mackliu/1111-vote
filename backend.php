@@ -12,10 +12,10 @@
     <a href="login.php">登出</a>
 </header>
 <main>
-    <a href='add_vote.php'>新增投票</a>    
-    <a href='edit_vote.php'>編輯投票</a>    
-    <a href='del_vote.php'>刪除投票</a>    
-    <a href='query_vote.php'>結果查詢</a>    
+    <a href='./back/add_vote.php'>新增投票</a>    
+    <a href='./back/edit_vote.php'>編輯投票</a>    
+    <a href='./back/del_vote.php'>刪除投票</a>    
+    <a href='./back/query_vote.php'>結果查詢</a>    
     <a href=''></a>    
 </main>
 <footer></footer>
