@@ -56,8 +56,8 @@ $options=$pdo->query("select * from `options` where `subject_id`='{$_GET['id']}'
             <input type="text" name="description[]"  class="description-input" value="<?=$opt['description'];?>">
             <span onclick="addOption()">+</span>
             <span onclick="removeOption(this)">-</span>
+            <input type="hidden" name="opt_id[]" value="<?=$opt['id'];?>" > 
         </div>
-           <input type="hidden" name="opt_id[]" value="<?=$opt['id'];?>> 
 
     <?php 
     }
