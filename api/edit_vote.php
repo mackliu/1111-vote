@@ -37,12 +37,20 @@ if(!empty($options)){
 if(isset($_POST['opt_id'])){
     foreach($_POST['opt_id'] as $idx => $id){
        $pdo->exec("update `options` set `description`='{$_POST['description'][$idx]}' where `id`='$id'");
+       unset($_POST['description'][$idx]);
     }
 
 }
 
 
-echo "<pre>";
+//處理新增的選項
+if(!empty($_POST['description'])){
+    foreach($_POST['description'] as $desc){
+        $pdo->exec("insert into `options` (`description`,`subject_id`) values('$desc','{$_POST['subject_id']}')");
+    }
+}
+
+/* echo "<pre>";
 print_r($options);
 echo "<pre>";
 echo "<pre>";
@@ -51,6 +59,8 @@ echo "<pre>";
 echo "<pre>";
 print_r($_POST['opt_id']);
 echo "<pre>";
+ */
 
+ header("location:../backend.php");
 
 
