@@ -22,7 +22,7 @@ $options=$pdo->query("select * from `options` where `subject_id`='{$_GET['id']}'
 
     <h1>編輯
         主題</h1>
-    <form action="../api/add_vote.php" method="post">
+    <form action="../api/edit_vote.php" method="post">
         <div>
             <label for="subject">主題說明：</label>
             <input type="text" 
@@ -43,19 +43,28 @@ $options=$pdo->query("select * from `options` where `subject_id`='{$_GET['id']}'
         </div>
         <div>
             <label for="type">單複選：</label>
-            <input type="radio" name="type" value="1">單選&nbsp;&nbsp;
-            <input type="radio" name="type" value="2">複選
+            <input type="radio" name="type" value="1" <?=($topic['type']==1)?'checked':'';?>>單選&nbsp;&nbsp;
+            <input type="radio" name="type" value="2" <?=($topic['type']==2)?'checked':'';?>>複選
         </div>
         <hr>
-    <div class="options">        
+    <div class="options">
+    <?php 
+        foreach($options as $opt){
+    ?>
         <div>
             <label for="description">項目：</label>
-            <input type="text" name="description[]"  class="description-input">
+            <input type="text" name="description[]"  class="description-input" value="<?=$opt['description'];?>">
             <span onclick="addOption()">+</span>
             <span onclick="removeOption(this)">-</span>
         </div>
+           <input type="hidden" name="opt_id[]" value="<?=$opt['id'];?>> 
+
+    <?php 
+    }
+    ?>        
     </div>
         <div>
+            <input type="hidden" name="subject_id" value="<?=$topic['id'];?>">
             <input type="submit" value="編輯">
         </div>
     </form>
