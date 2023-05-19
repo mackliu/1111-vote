@@ -20,7 +20,7 @@ if(!empty($options)){
 
         //以迴圈的方式將資料表中的選項id一個一個拿出來做檢查
         foreach($options as $opt){
-            
+
             //如果資料表中的id沒有在表單中的選項id陣列，則刪除
             if(!in_array($opt['id'],$_POST['opt_id'])){
                $pdo->exec("delete from `options` where `id`='{$opt['id']}'");
@@ -33,10 +33,10 @@ if(!empty($options)){
     }
 }
 
-
+//更新資料中已有的選項內容
 if(isset($_POST['opt_id'])){
-    foreach($_POST['opt_id'] as $id){
-
+    foreach($_POST['opt_id'] as $idx => $id){
+       $pdo->exec("update `options` set `description`='{$_POST['description'][$idx]}' where `id`='$id'");
     }
 
 }
