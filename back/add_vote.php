@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>新增主題</title>
     <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/jquery-3.7.0.min.js"></script>
 </head>
 <body>
 <main>
@@ -36,32 +37,8 @@
         <div>
             <label for="description">項目：</label>
             <input type="text" name="description[]"  class="description-input">
-            <span>+</span>
-        </div>
-
-        <div>
-            <label for="description">項目：</label>
-            <input type="text" name="description[]"  class="description-input">
-        </div>
-        <div>
-            <label for="description">項目：</label>
-            <input type="text" name="description[]"  class="description-input">
-        </div>
-        <div>
-            <label for="description">項目：</label>
-            <input type="text" name="description[]"  class="description-input">
-        </div>
-        <div>
-            <label for="description">項目：</label>
-            <input type="text" name="description[]"  class="description-input">
-        </div>
-        <div>
-            <label for="description">項目：</label>
-            <input type="text" name="description[]"  class="description-input">
-        </div>
-        <div>
-            <label for="description">項目：</label>
-            <input type="text" name="description[]"  class="description-input">
+            <span onclick="addOption()">+</span>
+            <span onclick="removeOption(this)">-</span>
         </div>
     </div>
         <div>
@@ -71,3 +48,22 @@
 </main>
 </body>
 </html>
+
+<script>
+function addOption(){
+    let opt=`<div>
+                <label for="description">項目：</label>
+                <input type="text" name="description[]"  class="description-input">
+                <span onclick="addOption()">+</span>
+                <span onclick="removeOption(this)">-</span>
+            </div>`
+    $(".options").append(opt);    
+}
+
+function removeOption(el){
+    let dom=$(el).parent()
+    $(dom).remove();
+}
+
+
+</script>
