@@ -1,6 +1,11 @@
 <?php 
 
-$subjects=$pdo->query("select * from `topics`")->fetchAll(PDO::FETCH_ASSOC);
+$subjects=$pdo->query("SELECT `topics`.`id`,
+                              `topics`.`subject`,
+                              sum(`options`.`total`) as '總計'
+                       FROM `topics`,`options` 
+                       WHERE `topics`.`id`=`options`.`subject_id` 
+                       GROUP BY `topics`.`id`;")->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 <h1>選擇你想看的投票項目</h1>
@@ -21,7 +26,7 @@ $subjects=$pdo->query("select * from `topics`")->fetchAll(PDO::FETCH_ASSOC);
                 <?=$subject['subject'];?>
             </a>
         </div>
-        <div class="vote-item"></div>
+        <div class="vote-item"><?=$subject['總計'];?></div>
     </li>
     <?php
     }
