@@ -95,3 +95,19 @@ main{
     border:0;
     font-size:12px;
 }
+.vip-login{
+    padding:2px 5px;
+    border-radius:5px;
+    background:rgb(248, 227, 33);
+    color:rgb(194, 133, 1);
+    border:0;
+    font-size:12px;
+}
+.normal{
+    padding:2px 5px;
+    border-radius:5px;
+    background:lightskyblue;
+    color:blue;
+    border:0;
+    font-size:12px;
+}

@@ -23,8 +23,18 @@ foreach($rows as $idx => $row){
                     case 2:
                         echo "多選";
                     break;
-                }
+                }                
             ?>
+        </button>
+        <?php
+            if($row['login']==1){
+                echo "<button class='vip-login'>";
+                echo "會員限定";                
+            }else{
+                echo "<button class='normal' >";
+                echo "公開";
+            }
+        ?>
         </button>
         <button onclick="location.href='?do=vote&id=<?=$row['id'];?>'">我要投票</button>
     </div>
