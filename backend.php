@@ -11,11 +11,11 @@
 </head>
 <body>
 <header>
-    <a href="index.php">首頁</a>
-    <a href="login.php">登出</a>
+    <a href="index.php">網站首頁</a>
+    <a href="backend.php">管理首頁</a>
+    <a href="./api/logout.php">登出</a>
     <nav>
         <a href='./backend.php?do=add_vote'>新增投票</a>     
-        <a href='./backend.php?do=query_vote'>結果查詢</a>
         <a href='./backend.php?do=query_vote'>會員管理</a>
         <a href='./backend.php?do=query_vote'>投票明細管理</a>
     </nav>

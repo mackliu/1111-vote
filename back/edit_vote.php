@@ -1,4 +1,4 @@
-<?php include_once "../db.php";
+<?php
 $topic=$pdo->query("select * from `topics` where `id`='{$_GET['id']}'")
            ->fetch(PDO::FETCH_ASSOC);
 
@@ -7,19 +7,6 @@ $options=$pdo->query("select * from `options` where `subject_id`='{$_GET['id']}'
 
 ?>
  
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>編輯主題</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <script src="../js/jquery-3.7.0.min.js"></script>
-</head>
-<body>
-<main>
-
     <h1>編輯
         主題</h1>
     <form action="../api/edit_vote.php" method="post">
@@ -68,9 +55,7 @@ $options=$pdo->query("select * from `options` where `subject_id`='{$_GET['id']}'
             <input type="submit" value="編輯">
         </div>
     </form>
-</main>
-</body>
-</html>
+
 
 <script>
 function addOption(){
