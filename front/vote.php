@@ -11,7 +11,15 @@ $options=$pdo->query("select * from `options` where `subject_id`='{$_GET['id']}'
 <?php
 foreach($options as $idx => $opt){
     echo "<li>";
-    echo "<input type='radio' name='desc' value='{$opt['id']}'>";
+    switch($topic['type']){
+        case 1:
+            echo "<input type='radio' name='desc' value='{$opt['id']}'>";                
+        break;
+        case 2:        
+            echo "<input type='checkbox' name='desc[]' value='{$opt['id']}'>";
+        break;
+    }
+    
     echo "<span>".($idx+1).". </span>";
     echo "<span>{$opt['description']}</span>";
     echo "</li>";
