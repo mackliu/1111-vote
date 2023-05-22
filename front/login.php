@@ -5,6 +5,11 @@ if(isset($_GET['error'])){
     echo "帳號或密碼錯誤";
     echo "</span>";
 }
+if(isset($_GET['msg'])){
+    echo "<span style='color:orange'>";
+    echo $msg[$_GET['msg']];
+    echo "</span>";
+}
 
 ?>
 <form action="./api/login.php" method="post">
