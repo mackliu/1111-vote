@@ -45,6 +45,8 @@
         <div class="list-item">
             <button onclick="location.href='./back/edit_vote.php?id=<?=$row['id'];?>'">編輯</button>
             <button onclick="location.href='./back/del_vote.php?id=<?=$row['id'];?>'">刪除</button>
+            <button onclick="location.href='./back/open.php?id=<?=$row['id'];?>'">立即上線</button>
+            <button onclick="location.href='./back/close.php?id=<?=$row['id'];?>'">立即結束</button>
         </div>
     </li>
 <?php
