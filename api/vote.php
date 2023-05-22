@@ -21,5 +21,26 @@ switch($subject_type){
     break;
 }
 
+//記錄使用者投票狀況
+if(isset($_SESSION['login'])){
+    $mem_id=$pdo->query("select `id` from `members` where `acc`='{$_SESSION['login']}'")->fetchColumn();
+}else{
+    $mem_id=0;
+}
+
+$topic_id=$_POST['subject_id'];
+$vote_time=date("Y-m-d H:i:s");
+
+/*
+    serialize()=>將陣列轉成可儲存的字串格式
+    json_encode()=>將陣列轉成json字串格式
+*/
+
+$records=serialize([$_POST['subject_id']=>$opt]);
+
+$sql="insert into `logs`(`mem_id`,`topic_id`,`vote_time`,`records`) 
+                  values('$mem_id','$topic_id','$vote_time','$records')";
+$pdo->exec($sql);
+
 
 header("location:../index.php?do=result&id=$subject_id");
