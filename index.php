@@ -11,7 +11,7 @@
 <body>
 <header>
     <a href="index.php">首頁</a>
-    <a href="index.php?do=result">結果</a>
+    <a href="index.php?do=result_list">結果</a>
     <a href="index.php?do=login">登入</a>
     <a href="index.php?do=reg">註冊</a>
 </header>
