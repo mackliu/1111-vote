@@ -16,6 +16,8 @@
     <nav>
         <a href='./backend.php?do=add_vote'>新增投票</a>     
         <a href='./backend.php?do=query_vote'>結果查詢</a>
+        <a href='./backend.php?do=query_vote'>會員管理</a>
+        <a href='./backend.php?do=query_vote'>投票明細管理</a>
     </nav>
 </header>
 <main>
