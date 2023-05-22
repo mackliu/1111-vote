@@ -12,8 +12,18 @@
 <header>
     <a href="index.php">首頁</a>
     <a href="index.php?do=result_list">結果</a>
-    <a href="index.php?do=login">登入</a>
-    <a href="index.php?do=reg">註冊</a>
+    <?php
+    if(!isset($_SESSION['login'])){
+    ?>
+        <a href="index.php?do=login">登入</a>
+        <a href="index.php?do=reg">註冊</a>
+    <?php
+    }else{
+    ?>
+        <a href="./api/logout.php">登出</a>
+    <?php
+    }
+    ?>
 </header>
 <main>
 
