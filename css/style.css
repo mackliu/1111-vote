@@ -24,12 +24,15 @@ main{
 }
 
 .topic-list,
-.vote-result{
+.vote-result,
+.vote-list{
     list-style-type: none;
 }
 .list-row,
 .vote-option,
-.vote-option-title
+.vote-option-title,
+.vote-subject,
+.vote-subject-title
 {
     display:flex;
     width:100%;
@@ -81,4 +84,14 @@ main{
 }
 .vote-option-title .vote-item{
     text-align: center;
+}
+
+/*單多選的按鈕美化*/
+.type-info{
+    padding:2px 5px;
+    border-radius:5px;
+    background:lightgreen;
+    color:darkgreen;
+    border:0;
+    font-size:12px;
 }
