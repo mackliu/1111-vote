@@ -5,7 +5,7 @@
         <div class="vote-item">功能</div>
     </div>
 <?php
-$sql="select * from `topics`";
+$sql="select * from `topics` where `close_time` >= '".date("Y-m-d H:i:s")."'";
 $rows=$pdo->query($sql)->fetchAll();
 foreach($rows as $idx => $row){
 ?>
