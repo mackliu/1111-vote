@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2023-05-22 04:53:25
+-- 產生時間： 2023-05-22 10:16:06
 -- 伺服器版本： 10.4.27-MariaDB
 -- PHP 版本： 8.2.0
 
@@ -36,6 +36,19 @@ CREATE TABLE `logs` (
   `created_time` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- 傾印資料表的資料 `logs`
+--
+
+INSERT INTO `logs` (`id`, `mem_id`, `topic_id`, `vote_time`, `records`, `created_time`) VALUES
+(1, 1, 5, '2023-05-22 07:55:38', 'Array', '2023-05-22 05:55:38'),
+(2, 1, 5, '2023-05-22 07:55:47', 'Array', '2023-05-22 05:55:47'),
+(3, 1, 2, '2023-05-22 07:55:55', 'Array', '2023-05-22 05:55:55'),
+(4, 1, 2, '2023-05-22 07:59:17', 'a:1:{i:2;a:2:{i:0;s:1:\"8\";i:1;s:2:\"18\";}}', '2023-05-22 05:59:17'),
+(5, 0, 5, '2023-05-22 08:00:45', 'a:1:{i:5;s:2:\"23\";}', '2023-05-22 06:00:45'),
+(6, 0, 5, '2023-05-22 08:00:54', 'a:1:{i:5;s:2:\"23\";}', '2023-05-22 06:00:54'),
+(7, 0, 5, '2023-05-22 14:03:43', 'a:1:{i:5;s:2:\"21\";}', '2023-05-22 06:03:43');
+
 -- --------------------------------------------------------
 
 --
@@ -50,6 +63,13 @@ CREATE TABLE `members` (
   `addr` varchar(128) NOT NULL,
   `email` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 傾印資料表的資料 `members`
+--
+
+INSERT INTO `members` (`id`, `acc`, `pw`, `name`, `addr`, `email`) VALUES
+(1, 'mack', '1234', ' 劉', '泰山', 'macklun@ms7.hinet.net');
 
 -- --------------------------------------------------------
 
@@ -71,14 +91,16 @@ CREATE TABLE `options` (
 --
 
 INSERT INTO `options` (`id`, `description`, `subject_id`, `total`, `created_time`, `updated_time`) VALUES
-(8, '20分鐘', 2, 14, '2023-05-15 08:19:27', '2023-05-22 01:06:26'),
-(18, '2分鐘', 2, 13, '2023-05-19 06:16:31', '2023-05-22 02:29:04'),
-(19, '10000秒', 2, 11, '2023-05-19 06:16:31', '2023-05-22 02:29:04'),
-(20, '123233132131', 2, 15, '2023-05-19 06:18:06', '2023-05-19 08:23:45'),
-(21, '3.5萬', 5, 6, '2023-05-19 06:23:38', '2023-05-19 08:21:18'),
-(22, '4萬', 5, 5, '2023-05-19 06:23:38', '2023-05-22 02:29:56'),
-(23, '4.5萬', 5, 8, '2023-05-19 06:23:38', '2023-05-19 08:21:10'),
-(24, '5萬以上', 5, 38, '2023-05-19 06:23:38', '2023-05-19 08:23:48');
+(8, '20分鐘', 2, 15, '2023-05-15 08:19:27', '2023-05-22 05:59:17'),
+(21, '3.5萬', 5, 8, '2023-05-19 06:23:38', '2023-05-22 06:03:43'),
+(22, '4萬', 5, 6, '2023-05-19 06:23:38', '2023-05-22 05:55:38'),
+(23, '4.5萬', 5, 10, '2023-05-19 06:23:38', '2023-05-22 06:00:54'),
+(24, '5萬以上', 5, 38, '2023-05-19 06:23:38', '2023-05-19 08:23:48'),
+(25, '8:00', 6, 0, '2023-05-22 06:45:53', '2023-05-22 06:45:53'),
+(26, '6:30', 6, 0, '2023-05-22 06:45:53', '2023-05-22 06:45:53'),
+(27, '7:00', 6, 0, '2023-05-22 06:45:53', '2023-05-22 06:45:53'),
+(28, '8:30', 6, 0, '2023-05-22 06:45:53', '2023-05-22 06:45:53'),
+(29, '9:00', 6, 0, '2023-05-22 06:45:53', '2023-05-22 06:45:53');
 
 -- --------------------------------------------------------
 
@@ -92,6 +114,7 @@ CREATE TABLE `topics` (
   `open_time` datetime NOT NULL,
   `close_time` datetime NOT NULL,
   `type` int(1) UNSIGNED NOT NULL,
+  `login` tinyint(1) NOT NULL,
   `created_time` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -100,9 +123,10 @@ CREATE TABLE `topics` (
 -- 傾印資料表的資料 `topics`
 --
 
-INSERT INTO `topics` (`id`, `subject`, `open_time`, `close_time`, `type`, `created_time`, `updated_time`) VALUES
-(2, '每天要花在通勤時間多久?', '2023-05-17 16:19:00', '2023-05-22 16:19:00', 2, '2023-05-15 08:19:27', '2023-05-19 06:18:06'),
-(5, '期望薪水多少?', '2023-05-19 14:23:00', '2023-05-22 14:23:00', 1, '2023-05-19 06:23:38', '2023-05-19 06:23:38');
+INSERT INTO `topics` (`id`, `subject`, `open_time`, `close_time`, `type`, `login`, `created_time`, `updated_time`) VALUES
+(2, '每天要花在通勤時間多久?', '2023-05-17 16:19:00', '2023-05-22 16:19:00', 2, 1, '2023-05-15 08:19:27', '2023-05-22 03:46:02'),
+(5, '期望薪水多少?', '2023-05-19 14:23:00', '2023-05-22 14:25:00', 1, 0, '2023-05-19 06:23:38', '2023-05-22 06:23:45'),
+(6, '國中以下，幾點上課好', '2023-05-23 21:00:10', '2023-05-26 15:33:00', 1, 0, '2023-05-22 06:45:53', '2023-05-22 07:33:29');
 
 --
 -- 已傾印資料表的索引
@@ -140,25 +164,25 @@ ALTER TABLE `topics`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `members`
 --
 ALTER TABLE `members`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `options`
 --
 ALTER TABLE `options`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `topics`
 --
 ALTER TABLE `topics`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
