@@ -36,9 +36,9 @@ foreach($mems as $mem){
         <td><?=$mem['name'];?></td>
         <td>
             <select name="pr">
-                <option value="super">超級管理員</option>
-                <option value="admin">管理員</option>
-                <option value="member">會員</option>
+                <option value="super" <?=($mem['pr']=='super')?'selected':'';?>>超級管理員</option>
+                <option value="admin" <?=($mem['pr']=='admin')?'selected':'';?>>管理員</option>
+                <option value="member" <?=($mem['pr']=='member')?'selected':'';?>>會員</option>
             </select>
         </td>
         <td>
