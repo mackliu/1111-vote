@@ -33,11 +33,17 @@ $subject=$pdo
             $name="一般訪客";
         }
     ?>
-    <tr>
-        <td><?=$name;?></td>
-        <td><?=$log['vote_time'];?></td>
-        <td><button>刪除</button></td>
-    </tr>
+    <form action="./api/del_log.php" method="post">
+        <tr>
+            <td><?=$name;?></td>
+            <td><?=$log['vote_time'];?></td>
+            <td>
+                <input type="hidden" name="topic_id" value="<?=$log['topic_id'];?>">
+                <input type="hidden" name="id" value="<?=$log['id'];?>">
+                <button type="submit">刪除</button>
+            </td>
+        </tr>
+    </form>
     <?php
     }
     ?>
