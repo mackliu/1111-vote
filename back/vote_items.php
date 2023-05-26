@@ -2,7 +2,9 @@
 
 $sql="select * from `logs` where `topic_id`='{$_GET['sub_id']}'";
 $logs=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
-
+$subject=$pdo
+            ->query("select `subject` from `topics` where `id`='{$_GET['sub_id']}'")
+            ->fetchColumn();
 ?>
 <style>
 .vote-items{
@@ -16,7 +18,7 @@ $logs=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 }
 
 </style>
-
+<h1><?=$subject;?></h1>
 <table class="vote-items">
     <tr>
         <td>會員</td>
@@ -25,9 +27,14 @@ $logs=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     </tr>
     <?php
     foreach($logs as $log){
+        $sql_name="select `name` from `members` where `id`='{$log['mem_id']}'";
+        $name=$pdo->query($sql_name)->fetchColumn();
+        if($name==''){
+            $name="一般訪客";
+        }
     ?>
     <tr>
-        <td><?=$log['mem_id'];?></td>
+        <td><?=$name;?></td>
         <td><?=$log['vote_time'];?></td>
         <td><button>刪除</button></td>
     </tr>
