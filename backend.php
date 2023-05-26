@@ -1,5 +1,15 @@
 <?php include_once "db.php";
-$do=$_GET['do']??'error.php';
+$do='';
+if(isset($_GET['do'])){
+    $do=$_GET['do'];
+}else{
+    if(isset($_SESSION['pr'])){
+        $do=$_SESSION['pr'];
+    }else{
+        $do="error";
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
