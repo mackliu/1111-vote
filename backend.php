@@ -38,8 +38,11 @@ if(isset($_GET['do'])){
             echo "    <a href='./backend.php?do=query_vote'>投票明細管理</a>";
             echo "</nav>";
         break;
-        case "member":
-
+        case "member":        
+            echo "<nav>";
+            echo "    <a href='./backend.php?do=edit_self'>修改個人資料</a>";
+            echo "    <a href='./backend.php?do=vote_history'>投票紀錄查詢</a>";
+            echo "</nav>";
         break;
     }
 
