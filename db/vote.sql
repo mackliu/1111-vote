@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2023-05-22 10:16:06
+-- 產生時間： 2023-05-26 02:43:12
 -- 伺服器版本： 10.4.27-MariaDB
 -- PHP 版本： 8.2.0
 
@@ -61,15 +61,17 @@ CREATE TABLE `members` (
   `pw` varchar(16) NOT NULL,
   `name` varchar(16) NOT NULL,
   `addr` varchar(128) NOT NULL,
-  `email` varchar(64) NOT NULL
+  `email` varchar(64) NOT NULL,
+  `pr` varchar(16) NOT NULL DEFAULT 'member'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `members`
 --
 
-INSERT INTO `members` (`id`, `acc`, `pw`, `name`, `addr`, `email`) VALUES
-(1, 'mack', '1234', ' 劉', '泰山', 'macklun@ms7.hinet.net');
+INSERT INTO `members` (`id`, `acc`, `pw`, `name`, `addr`, `email`, `pr`) VALUES
+(1, 'mack', '1234', ' 劉', '泰山', 'macklun@ms7.hinet.net', 'super'),
+(2, 'john', '5678', '醬', '泰山', 'john@gmail.com', 'member');
 
 -- --------------------------------------------------------
 
@@ -170,7 +172,7 @@ ALTER TABLE `logs`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `members`
 --
 ALTER TABLE `members`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `options`
