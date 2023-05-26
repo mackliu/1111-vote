@@ -31,8 +31,8 @@ $mems=$pdo->query($sql)->fetchAll();
 <?php
 foreach($mems as $mem){
 ?>
-<tr>
     <form action="./api/change_pr.php" method="post">
+<tr>
         <td><?=$mem['name'];?></td>
         <td>
             <select name="pr">
@@ -46,8 +46,8 @@ foreach($mems as $mem){
             <button type="submit">編輯</button>
             <button type="button">刪除</button>
         </td>
-    </form>
-</tr>
+    </tr>
+</form>
 
 
 <?php
