@@ -8,7 +8,8 @@
 //$sql="select * from `topics` where `close_time` >= '".date("Y-m-d H:i:s")."'";
 //$rows=$pdo->query($sql)->fetchAll();
 
-$rows=all('topics');
+//$rows=all('topics');
+$rows=q("select * from `topics` where `close_time` >= '".date("Y-m-d H:i:s")."'");
 
 foreach($rows as $idx => $row){
 ?>
