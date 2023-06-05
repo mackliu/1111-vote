@@ -6,9 +6,13 @@
     / -> 絕對位置
 */
 //$topic=$pdo->query("select * from `topics` where `id`='{$_GET['id']}'")->fetch(PDO::FETCH_ASSOC);
-$topic=$Topic->find($_GET['id']);
-
-if($topic['login']==1){
+//$topic=$Topic->find($_GET['id']);
+$Subject=new Subject;
+$topic=$Subject->find($_GET['id']);
+//dd($topic);
+/* dd($topic);
+dd($Subject->options()); */
+if($topic->login==1){
     if(!isset($_SESSION['login'])){
         $_SESSION['position']="/index.php?do=vote&id={$_GET['id']}";
 
@@ -18,22 +22,23 @@ if($topic['login']==1){
 }
 
 //$options=$pdo->query("select * from `options` where `subject_id`='{$_GET['id']}'")->fetchAll(PDO::FETCH_ASSOC);
-$options=$Option->all(['subject_id'=>$_GET['id']]);
+//$options=$Option->all(['subject_id'=>$_GET['id']]);
+//$options=$Subject->options();
 ?>
 
-<h2><?=$topic['subject'];?></h2>
+<h2><?=$topic->subject;?></h2>
 <?php
-    if(!empty($topic['image'])){
-        echo "<img src='./upload/{$topic['image']}' style='width:450px;height:300px'>";
+    if(!empty($topic->image)){
+        echo "<img src='./upload/{$topic->image}' style='width:450px;height:300px'>";
     }
 ?>
 
 <form action="./api/vote.php" method="post">
 <ul>
 <?php
-foreach($options as $idx => $opt){
+foreach($topic->options as $idx => $opt){
     echo "<li>";
-    switch($topic['type']){
+    switch($topic->type){
         case 1:
             echo "<input type='radio' name='desc' value='{$opt['id']}'>";                
         break;

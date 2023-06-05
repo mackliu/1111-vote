@@ -25,6 +25,7 @@ class DB
     protected $table;
     protected $pdo;
     protected $query_result;
+    protected $result;
 
     function __construct($table)
     {
@@ -74,7 +75,8 @@ class DB
         }
 
         //echo $sql;
-        return $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
+        $this->result=$this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
+        return $this->result;
     }
 
     function save($cols){
@@ -210,4 +212,46 @@ $Option=new DB('options');
 $Log=new DB('logs');
 $User=new DB('members');
 
+
+
+class Subject extends DB{
+
+    function __construct(){
+        $this->table='topics';
+        $this->pdo = new PDO($this->dsn, $this->user, $this->pw);
+    }
+
+    function find($arg)
+    {
+        $sql = "select * from `$this->table`  where ";
+
+        if (is_array($arg)) {
+            foreach ($arg as $key => $value) {
+
+                $tmp[] = "`$key`='$value'";
+            }
+
+            $sql .= join(" && ", $tmp);
+        } else {
+
+            $sql .= " `id` = '$arg' ";
+        }
+
+        //echo $sql;
+        $this->result=$this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
+
+        $topic=new stdClass;
+        foreach($this->result as $col => $value){
+            $topic->$col=$value;
+        }
+
+        $topic->options=$this->options();
+        return $topic;
+    }
+
+    function options(){
+        $sql="select * from `options` where `subject_id`='{$this->result['id']}'";
+        return $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+    }
+}
 ?>
