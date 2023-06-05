@@ -3,13 +3,13 @@
 /* $sql="select count(*) from `members` where `acc`='{$_POST['acc']}' && `pw`='{$_POST['pw']}'";
 $chk=$pdo->query($sql)->fetchColumn(); */
 
-$chk=_count('members',['acc'=>$_POST['acc'],'pw'=>$_POST['pw']]);
+$chk=$User->count(['acc'=>$_POST['acc'],'pw'=>$_POST['pw']]);
 
 if($chk){
     
     /* $sql_pr="select `pr` from `members` where `acc`='{$_POST['acc']}' && `pw`='{$_POST['pw']}'";    
     $pr=$pdo->query($sql_pr)->fetchColumn(); */
-    $pr=find('members',['acc'=>$_POST['acc'],'pw'=>$_POST['pw']])['pr'];
+    $pr=$User->find(['acc'=>$_POST['acc'],'pw'=>$_POST['pw']])['pr'];
 
     $_SESSION['login']=$_POST['acc'];
     

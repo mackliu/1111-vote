@@ -6,7 +6,7 @@
     / -> 絕對位置
 */
 //$topic=$pdo->query("select * from `topics` where `id`='{$_GET['id']}'")->fetch(PDO::FETCH_ASSOC);
-$topic=find('topics',$_GET['id']);
+$topic=$Topic->find($_GET['id']);
 
 if($topic['login']==1){
     if(!isset($_SESSION['login'])){
@@ -18,7 +18,7 @@ if($topic['login']==1){
 }
 
 //$options=$pdo->query("select * from `options` where `subject_id`='{$_GET['id']}'")->fetchAll(PDO::FETCH_ASSOC);
-$options=all('options',['subject_id'=>$_GET['id']]);
+$options=$Option->all(['subject_id'=>$_GET['id']]);
 ?>
 
 <h2><?=$topic['subject'];?></h2>
